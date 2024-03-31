@@ -20,5 +20,7 @@ int main()
     cout << endl;
     cout << "Result of KMP algorithm: " << endl;
     KMP(pattern, text);*/
-     return 0;
+    //asd
+    
+    return 0;
 }
