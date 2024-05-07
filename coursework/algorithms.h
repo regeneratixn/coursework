@@ -44,15 +44,15 @@ void rabinkarp(const string& pattern, const string& text) {
     }
 }
 
-// Алгоритм Рабина-Карпа для поиска подстроки в строке для расчета времени))
+
 void rabinkarp_t(const string& pattern, const string& text) {
     int pattern_size = pattern.size();
     int text_size = text.size();
-    int prime = 101; // Простое число для хэширования
+    int prime = 101; 
     unsigned long long patternHash = hashFunc(pattern, 0, pattern_size - 1);
     unsigned long long textHash = hashFunc(text, 0, pattern_size - 1);
     bool found = false;
-    int kkk = 0;
+
     for (int i = 0; i <= text_size - pattern_size; i++) {
         if (patternHash == textHash) {
             bool match = true;
@@ -63,7 +63,7 @@ void rabinkarp_t(const string& pattern, const string& text) {
                 }
             }
             if (match) {
-                //cout << "Pattern found at index " << i << endl;
+
                 found = true;
             }
         }
@@ -73,14 +73,12 @@ void rabinkarp_t(const string& pattern, const string& text) {
     }
 
     if (!found) {
-        // cout << "Pattern not found." << kkk << endl;
-        kkk++;
+        ;
 
     }
 }
 
 //Алгоритм Бойера-Мура-Хорспула
-
 vector<int> preprocess(string& substring, int start_index, int end_index)
 {
     vector<int> a;
@@ -138,7 +136,6 @@ void BMH_t(string& substring, string& text)
     int start_index = int(' ');
     int end_index = int('~');
     vector<int> a = preprocess(substring, start_index, end_index);
-    int kkk = 0;
     while (i < text.size())
     {
         bool match = false;
@@ -154,7 +151,7 @@ void BMH_t(string& substring, string& text)
             flag = true;
         }
         i = i + a[(int)text[i] - start_index];
-    } if (flag == false) kkk++; //cout << "Pattern not found." << endl;
+    } if (flag == false) ; //cout << "Pattern not found." << endl;
 
 
 }
@@ -178,7 +175,7 @@ vector<int> prefix_function(string& substring)
     }return pi;
 
 }
-
+//Алгоритм Кнута-Морриса-Пратта
 void KMP(string& substring, string& text, int start_index = 0)
 {
     int j = 0;
@@ -206,7 +203,6 @@ void KMP_t(string& substring, string& text, int start_index = 0)
     int j = 0;
     vector<int> resultOfprefixfunction = prefix_function(substring);
     bool flag = false;
-    int kkk = 0;
     for (int i = 0; i < text.size(); i++)
     {
         while (j > 0 && text[i] != substring[j])
@@ -222,5 +218,47 @@ void KMP_t(string& substring, string& text, int start_index = 0)
             //cout << "Pattern found at index " << i - j + 1 << endl;
             flag = true;
         }
-    } if (flag == false) kkk++; //cout << "Pattern not found." << endl;
+    } if (flag == false) ; //cout << "Pattern not found." << endl;
 }
+
+//Наивный алгоритм
+void naiveSearch(const string& pattern, const string& text) {
+    int n = text.length();
+    int m = pattern.length();
+    bool found = false;
+    for (int i = 0; i <= n - m; ++i) {
+        int j = 0;
+        while (j < m && text[i + j] == pattern[j]) {
+            ++j;
+        }
+        if (j == m) {
+            cout << "Pattern found at index " << i << endl;
+            found = true;
+           // return;  // Нашли вхождение подстроки, завершаем функцию
+        }
+    }
+
+    if(!found) cout << "Pattern not found." << endl;
+}
+
+void naiveSearch_t(const string& pattern, const string& text) 
+{
+    int n = text.length();
+    int m = pattern.length();
+    bool found = false;
+    for (int i = 0; i <= n - m; ++i) {
+        int j = 0;
+        //if(i%100==0) cout << "i = " << i << endl;
+        while (j < m && text[i + j] == pattern[j]) {
+            ++j;
+        }
+        if (j == m) {
+            //cout << "Pattern found at index " << i << endl;
+            found = true;
+            // return;  // Нашли вхождение подстроки, завершаем функцию
+        }
+    }
+
+    if (!found) cout << "Pattern not found." << endl;
+}
+

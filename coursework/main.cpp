@@ -4,14 +4,24 @@
 
 int main()
 {
-
+    
     string text, pattern;
-    cout << "Enter the text:" << endl;
-    cin >> text;
     cout << "Enter the pattern:" << endl;
     cin >> pattern;
+    cout << "Enter the text:" << endl;
+    cin >> text;
     cout << endl;
-    rabinkarp_time(pattern, text, 1e4);
+    int size = 50000;
+    naiveSearch_time(pattern, text,size);
+    //rabinkarp_time(pattern, text, size);
+    //KMP_time(pattern, text, size);
+    //BMH_time(pattern, text, size);
+
+   /* naiveSearch(pattern, text);
+    rabinkarp(pattern, text);
+    KMP(pattern, text);
+    BMH(pattern, text);
+    */
     /*cout << "Result of rabinkarp algorithm:" << endl;
     rabinkarp(pattern, text);
     cout << endl;
@@ -20,7 +30,7 @@ int main()
     cout << endl;
     cout << "Result of KMP algorithm: " << endl;
     KMP(pattern, text);*/
-    //asd
+    
     
     return 0;
 }
